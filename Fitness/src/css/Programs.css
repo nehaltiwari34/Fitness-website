@@ -1,0 +1,285 @@
+/* Programs.css */
+.programs-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.programs-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.programs-header h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: var(--gradient-energy);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  margin-bottom: 0.5rem;
+}
+
+.programs-header p {
+  color: var(--secondary);
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.programs-controls {
+  background: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  margin-bottom: 2rem;
+}
+
+.goal-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.goal-btn {
+  padding: 0.75rem 1.5rem;
+  border: 2px solid var(--border-color);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.goal-btn.active {
+  background: var(--gradient-primary);
+  color: white;
+  border-color: transparent;
+}
+
+.goal-btn:hover:not(.active) {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.programs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 2rem;
+}
+
+.program-card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+  transition: var(--transition);
+}
+
+.program-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+
+.program-image {
+  height: 200px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.image-placeholder {
+  width: 80px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 2rem;
+  font-weight: 700;
+  backdrop-filter: blur(10px);
+}
+
+.program-content {
+  padding: 1.5rem;
+}
+
+.program-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.program-header h3 {
+  color: var(--primary);
+  font-size: 1.4rem;
+  margin: 0;
+  flex: 1;
+}
+
+.program-meta {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.program-meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.3rem 0.8rem;
+  background: var(--bg-secondary);
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.program-description {
+  color: var(--secondary);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.program-focus {
+  margin-bottom: 1rem;
+}
+
+.program-focus strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--primary);
+}
+
+.focus-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.focus-tag {
+  padding: 0.3rem 0.8rem;
+  background: var(--primary-light);
+  color: var(--primary);
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.program-equipment {
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.program-equipment strong {
+  color: var(--primary);
+}
+
+.program-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.view-btn, .start-btn {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  font-size: 0.9rem;
+}
+
+.view-btn {
+  background: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+
+.view-btn:hover {
+  background: var(--primary);
+  color: white;
+}
+
+.start-btn {
+  background: var(--gradient-primary);
+  color: white;
+}
+
+.start-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.no-programs {
+  text-align: center;
+  padding: 3rem;
+  color: var(--secondary);
+  grid-column: 1 / -1;
+}
+
+/* Difficulty Badges */
+.difficulty-badge.beginner {
+  background: var(--success-light);
+  color: var(--success);
+  padding: 0.3rem 0.8rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.difficulty-badge.intermediate {
+  background: var(--warning-light);
+  color: var(--warning);
+  padding: 0.3rem 0.8rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.difficulty-badge.advanced {
+  background: var(--error-light);
+  color: var(--error);
+  padding: 0.3rem 0.8rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .programs-container {
+    padding: 1rem;
+  }
+  
+  .programs-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .program-header {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .program-actions {
+    flex-direction: column;
+  }
+  
+  .goal-filters {
+    gap: 0.5rem;
+  }
+  
+  .goal-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}

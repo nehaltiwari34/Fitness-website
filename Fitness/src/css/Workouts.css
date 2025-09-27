@@ -1,0 +1,343 @@
+/* Workouts.css */
+.workouts-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.workouts-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.workouts-header h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: var(--gradient-energy);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  margin-bottom: 1rem;
+}
+
+.workouts-header p {
+  color: var(--secondary);
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.workouts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.workout-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  border: 1px solid var(--border-color);
+}
+
+.workout-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.card-header h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.completion-badge, .exercise-count, .programs-count {
+  background: var(--gradient-primary);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.weekly-schedule {
+  margin: 1rem 0;
+}
+
+.schedule-day {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.schedule-day:last-child {
+  border-bottom: none;
+}
+
+.schedule-day.completed {
+  opacity: 0.7;
+}
+
+.schedule-day.completed .workout-type {
+  text-decoration: line-through;
+}
+
+.day-name {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.workout-type {
+  color: var(--secondary);
+  font-size: 0.9rem;
+}
+
+.status-indicator {
+  color: var(--success);
+  font-weight: bold;
+}
+
+.exercise-categories {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1rem 0;
+  flex-wrap: wrap;
+}
+
+.category-tag {
+  background: var(--bg-secondary);
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.category-tag.active {
+  background: var(--primary);
+  color: white;
+}
+
+.category-tag:hover {
+  background: var(--primary-light);
+}
+
+.exercise-preview {
+  margin: 1rem 0;
+}
+
+.exercise-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.exercise-item:last-child {
+  border-bottom: none;
+}
+
+.exercise-name {
+  font-weight: 600;
+}
+
+.exercise-details {
+  color: var(--secondary);
+  font-size: 0.8rem;
+}
+
+.programs-list {
+  margin: 1rem 0;
+}
+
+.program-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.program-item:last-child {
+  border-bottom: none;
+}
+
+.program-info h4 {
+  margin-bottom: 0.25rem;
+  color: var(--primary);
+}
+
+.program-info p {
+  font-size: 0.9rem;
+  color: var(--secondary);
+  margin-bottom: 0.5rem;
+}
+
+.program-meta {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.program-duration, .program-difficulty {
+  background: var(--bg-secondary);
+  padding: 0.2rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.7rem;
+}
+
+.history-highlights {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.stat-card {
+  background: var(--gradient-primary);
+  color: white;
+  padding: 1rem;
+  border-radius: 12px;
+  text-align: center;
+  flex: 1;
+}
+
+.stat-number {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  opacity: 0.9;
+}
+
+.recent-workouts {
+  margin: 1rem 0;
+}
+
+.workout-log {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.workout-log:last-child {
+  border-bottom: none;
+}
+
+.workout-date {
+  font-size: 0.8rem;
+  color: var(--secondary);
+}
+
+.workout-details {
+  font-weight: 600;
+}
+
+.workout-calories {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.card-link {
+  display: block;
+  text-align: center;
+  margin-top: 1rem;
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.card-link:hover {
+  text-decoration: underline;
+}
+
+.recent-workouts-section {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: var(--shadow);
+}
+
+.recent-workouts-section h2 {
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+}
+
+.workouts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.workout-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: var(--bg-secondary);
+  border-radius: 8px;
+}
+
+.workout-info h3 {
+  margin-bottom: 0.25rem;
+  color: var(--primary);
+}
+
+.workout-info p {
+  color: var(--secondary);
+  font-size: 0.9rem;
+}
+
+.calories-burned {
+  background: var(--primary);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+/* Buttons */
+.btn-primary {
+  background: var(--gradient-primary);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+  transition: var(--transition);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.btn-outline {
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.8rem;
+  transition: var(--transition);
+}
+
+.btn-outline:hover {
+  background: var(--primary);
+  color: white;
+}
