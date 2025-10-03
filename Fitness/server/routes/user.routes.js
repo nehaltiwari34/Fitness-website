@@ -1,13 +1,24 @@
 const express = require('express');
-const { getDashboard, getWorkouts, createWorkout, logWeight, logFood } = require('../controllers/userController');
-const { protect } = require('../middleware/auth');
+const auth = require('../middleware/auth.middleware');
+const User = require('../models/User.model');
 
 const router = express.Router();
 
-router.get('/dashboard', protect, getDashboard);
-router.get('/workouts', protect, getWorkouts);
-router.post('/workouts', protect, createWorkout);
-router.post('/log-weight', protect, logWeight);
-router.post('/log-food', protect, logFood);
+// Get user profile
+router.get('/profile', auth, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.userId).select('-password');
+    res.json({
+      success: true,
+      user: user
+    });
+  } catch (error) {
+    console.error('User profile error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Server error'
+    });
+  }
+});
 
 module.exports = router;
