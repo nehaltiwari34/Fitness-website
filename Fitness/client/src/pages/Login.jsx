@@ -25,7 +25,6 @@ const Login = () => {
             ...formData,
             [e.target.name]: e.target.value
         });
-        // Clear error when user starts typing
         if (error) setError('');
     };
 
@@ -34,11 +33,8 @@ const Login = () => {
         setError('');
         setLoading(true);
 
-        console.log('Login form submitted:', formData); // Debug log
-
         try {
             const result = await login(formData.email, formData.password);
-            console.log('Login result:', result); // Debug log
             
             if (result.success) {
                 navigate('/dashboard');
@@ -46,40 +42,18 @@ const Login = () => {
                 setError(result.message || 'Login failed. Please try again.');
             }
         } catch (err) {
-            console.error('Login error:', err); // Debug log
             setError('An unexpected error occurred during login');
         } finally {
             setLoading(false);
         }
     };
 
-    // Demo login for testing
-    const handleDemoLogin = async () => {
-        setFormData({
-            email: 'demo@fittrack.com',
-            password: 'demo123'
-        });
-        
-        // Wait a bit for state to update, then submit
-        setTimeout(async () => {
-            setLoading(true);
-            setError('');
-            
-            const result = await login('demo@fittrack.com', 'demo123');
-            if (result.success) {
-                navigate('/dashboard');
-            } else {
-                setError(result.message || 'Demo login failed');
-            }
-            setLoading(false);
-        }, 100);
-    };
-
     return (
         <div className="auth-container">
             <div className="auth-card">
                 <div className="auth-header">
-                    <h1>Welcome Back</h1>
+                    <h1>FitTrack</h1>
+                    <h2>Welcome Back</h2>
                     <p>Sign in to your FitTrack account</p>
                 </div>
 
@@ -128,38 +102,8 @@ const Login = () => {
                     </button>
                 </form>
 
-                <div className="auth-divider">
-                    <span>or try a demo account</span>
-                </div>
-
-                <button 
-                    onClick={handleDemoLogin}
-                    className="btn btn-secondary btn-full"
-                    disabled={loading || authLoading}
-                    type="button"
-                >
-                    Demo Login
-                </button>
-
                 <div className="auth-footer">
                     <p>Don't have an account? <Link to="/signup">Sign up</Link></p>
-                </div>
-
-                {/* Debug info - remove in production */}
-                <div style={{ 
-                    marginTop: '20px', 
-                    padding: '10px', 
-                    background: '#f5f5f5', 
-                    borderRadius: '5px', 
-                    fontSize: '12px',
-                    fontFamily: 'monospace'
-                }}>
-                    <strong>Debug Info:</strong><br />
-                    Email: {formData.email}<br />
-                    Loading: {loading ? 'Yes' : 'No'}<br />
-                    Auth Loading: {authLoading ? 'Yes' : 'No'}<br />
-                    User: {user ? 'Logged In' : 'Not Logged In'}<br />
-                    Error: {error || 'None'}
                 </div>
             </div>
         </div>
