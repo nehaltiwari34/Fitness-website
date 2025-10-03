@@ -126,3 +126,13 @@
 .btn-secondary:hover:not(:disabled) {
     border-color: var(--primary);
 }
+.auth-error {
+    background: #fee;
+    color: #c33;
+    border: 1px solid #fcc;
+    padding: 12px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 500;
+}
