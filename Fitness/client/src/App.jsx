@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, Navigate } from 'react-router-dom';
-import { AuthProvider } from './context/AuthContext';
+import { AuthProvider, useAuth } from './context/AuthContext';
 import { WorkoutProvider } from './context/WorkoutContext';
 
 // Import Components
@@ -23,6 +23,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import CreateWorkout from './pages/CreateWorkout';
 import About from './pages/About';
+import ProfileSetup from './pages/ProfileSetup';
 
 // Import CSS
 import './css/App.css';
@@ -36,12 +37,92 @@ const AppLoading = () => (
     </div>
 );
 
-// Home Route Component - Shows home page for everyone, no redirects
+// Home Route Component - Shows home page for everyone
 const HomeRoute = () => {
+    const { user, loading } = useAuth();
+    
+    if (loading) {
+        return <AppLoading />;
+    }
+    
     return <Home />;
 };
 
+// Profile Check Component - Used within protected routes
+const ProfileCheck = ({ children }) => {
+    const { user } = useAuth();
+    
+    // Check if user has completed profile setup (has height data)
+    const hasCompleteProfile = user?.profile?.height;
+    
+    if (!hasCompleteProfile) {
+        return <Navigate to="/profile-setup" replace />;
+    }
+    
+    return children;
+};
+
+// Protected Route with Profile Check
+const ProtectedRouteWithProfile = ({ children }) => {
+    return (
+        <ProtectedRoute>
+            <ProfileCheck>
+                {children}
+            </ProfileCheck>
+        </ProtectedRoute>
+    );
+};
+
+// Public Route - Redirect to dashboard if already logged in with complete profile
+const PublicRoute = ({ children }) => {
+    const { user, loading } = useAuth();
+    
+    if (loading) {
+        return <AppLoading />;
+    }
+    
+    // If user is logged in and has complete profile, redirect to dashboard
+    if (user && user.profile?.height) {
+        return <Navigate to="/dashboard" replace />;
+    }
+    
+    // If user is logged in but profile incomplete, redirect to profile setup
+    if (user && !user.profile?.height) {
+        return <Navigate to="/profile-setup" replace />;
+    }
+    
+    return children;
+};
+
+// Profile Setup Route - Special handling
+const ProfileSetupRoute = () => {
+    const { user, loading } = useAuth();
+    
+    if (loading) {
+        return <AppLoading />;
+    }
+    
+    // If not logged in, redirect to login
+    if (!user) {
+        return <Navigate to="/login" replace />;
+    }
+    
+    // If profile is already complete, redirect to dashboard
+    if (user.profile?.height) {
+        return <Navigate to="/dashboard" replace />;
+    }
+    
+    return <ProfileSetup />;
+};
+
+// Main App Content
 function AppContent() {
+    const { loading } = useAuth();
+    
+    if (loading) {
+        return <AppLoading />;
+    }
+    
     return (
         <Router>
             <div className="App">
@@ -49,64 +130,75 @@ function AppContent() {
                 
                 <main className="main-content">
                     <Routes>
-                        {/* Home Route - Always show home page */}
+                        {/* Home Route - Accessible to all */}
                         <Route path="/" element={<HomeRoute />} />
                         
-                        {/* Public Routes */}
-                        <Route path="/login" element={<Login />} />
-                        <Route path="/signup" element={<Signup />} />
+                        {/* Public Routes - Redirect if logged in */}
+                        <Route path="/login" element={
+                            <PublicRoute>
+                                <Login />
+                            </PublicRoute>
+                        } />
+                        <Route path="/signup" element={
+                            <PublicRoute>
+                                <Signup />
+                            </PublicRoute>
+                        } />
                         <Route path="/about" element={<About />} />
                         
-                        {/* Protected Routes - Only for authenticated users */}
+                        {/* Profile Setup - Special route */}
+                        <Route path="/profile-setup" element={<ProfileSetupRoute />} />
+                        
+                        {/* Protected Routes - Require authentication AND complete profile */}
                         <Route path="/dashboard" element={
-                            <ProtectedRoute>
+                            <ProtectedRouteWithProfile>
                                 <Dashboard />
-                            </ProtectedRoute>
+                            </ProtectedRouteWithProfile>
                         } />
                         <Route path="/workouts" element={
-                            <ProtectedRoute>
+                            <ProtectedRouteWithProfile>
                                 <Workouts />
-                            </ProtectedRoute>
+                            </ProtectedRouteWithProfile>
                         } />
                         <Route path="/workouts/create" element={
-                            <ProtectedRoute>
+                            <ProtectedRouteWithProfile>
                                 <CreateWorkout />
-                            </ProtectedRoute>
+                            </ProtectedRouteWithProfile>
                         } />
                         <Route path="/my-plan" element={
-                            <ProtectedRoute>
+                            <ProtectedRouteWithProfile>
                                 <MyPlan />
-                            </ProtectedRoute>
+                            </ProtectedRouteWithProfile>
                         } />
                         <Route path="/exercises" element={
-                            <ProtectedRoute>
+                            <ProtectedRouteWithProfile>
                                 <Exercises />
-                            </ProtectedRoute>
+                            </ProtectedRouteWithProfile>
                         } />
                         <Route path="/programs" element={
-                            <ProtectedRoute>
+                            <ProtectedRouteWithProfile>
                                 <Programs />
-                            </ProtectedRoute>
+                            </ProtectedRouteWithProfile>
                         } />
                         <Route path="/history" element={
-                            <ProtectedRoute>
+                            <ProtectedRouteWithProfile>
                                 <History />
-                            </ProtectedRoute>
+                            </ProtectedRouteWithProfile>
                         } />
                         <Route path="/progress" element={
-                            <ProtectedRoute>
+                            <ProtectedRouteWithProfile>
                                 <Progress />
-                            </ProtectedRoute>
+                            </ProtectedRouteWithProfile>
                         } />
                         <Route path="/nutrition" element={
-                            <ProtectedRoute>
+                            <ProtectedRouteWithProfile>
                                 <Nutrition />
-                            </ProtectedRoute>
+                            </ProtectedRouteWithProfile>
                         } />
                         <Route path="/community" element={
-                            <ProtectedRoute>
+                            <ProtectedRouteWithProfile>
                                 <Community />
-                            </ProtectedRoute>
+                            </ProtectedRouteWithProfile>
                         } />
                         
                         {/* 404 Page */}
@@ -120,6 +212,7 @@ function AppContent() {
     );
 }
 
+// Main App Component
 function App() {
     return (
         <AuthProvider>
@@ -130,8 +223,10 @@ function App() {
     );
 }
 
-// 404 Component
+// 404 Not Found Component
 const NotFound = () => {
+    const { user } = useAuth();
+    
     return (
         <div className="not-found-container">
             <div className="not-found-content">
@@ -139,7 +234,11 @@ const NotFound = () => {
                 <p>Oops! The page you're looking for doesn't exist.</p>
                 <div className="not-found-actions">
                     <Link to="/" className="btn-primary">Go Home</Link>
-                    <Link to="/dashboard" className="btn-outline">Go to Dashboard</Link>
+                    {user ? (
+                        <Link to="/dashboard" className="btn-outline">Go to Dashboard</Link>
+                    ) : (
+                        <Link to="/login" className="btn-outline">Go to Login</Link>
+                    )}
                 </div>
             </div>
         </div>
