@@ -1,120 +1,136 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import '../css/About.css';
 
 const About = () => {
+    const { user } = useAuth();
+
     return (
         <div className="about-container">
-            <div className="about-hero">
-                <div className="container">
-                    <h1>About FitTrack</h1>
-                    <p className="hero-subtitle">Your personal fitness companion for a healthier lifestyle</p>
-                </div>
-            </div>
-
-            <div className="about-content">
-                <div className="container">
-                    <section className="mission-section">
-                        <h2>Our Mission</h2>
-                        <p>
-                            At FitTrack, we believe that everyone deserves access to personalized fitness guidance 
-                            and tools that make health journey enjoyable and effective. Our mission is to empower 
-                            individuals to transform their health, one habit at a time.
-                        </p>
-                    </section>
-
-                    <section className="story-section">
-                        <h2>Our Story</h2>
-                        <p>
-                            FitTrack was born from a passion for both technology and fitness. As computer science 
-                            students and fitness enthusiasts, we noticed a gap in the market for truly personalized, 
-                            accessible fitness solutions that combine expert guidance with cutting-edge technology.
-                        </p>
-                        <p>
-                            What started as a university project has evolved into a comprehensive platform that 
-                            helps thousands of users achieve their fitness goals through tailored workout plans, 
-                            personalized nutrition guidance, and a supportive community.
-                        </p>
-                    </section>
-
-                    <section className="technology-section">
-                        <h2>The Technology</h2>
-                        <p>
-                            FitTrack is built using modern web technologies to ensure a fast, responsive, 
-                            and reliable experience:
-                        </p>
-                        
-                        <div className="tech-grid">
-                            <div className="tech-category">
-                                <h3>Frontend</h3>
-                                <ul>
-                                    <li>React.js</li>
-                                    <li>React Router</li>
-                                    <li>Context API</li>
-                                    <li>Axios</li>
-                                    <li>CSS3 with Variables</li>
-                                </ul>
-                            </div>
-                            
-                            <div className="tech-category">
-                                <h3>Backend</h3>
-                                <ul>
-                                    <li>Node.js</li>
-                                    <li>Express.js</li>
-                                    <li>MongoDB with Mongoose</li>
-                                    <li>JWT Authentication</li>
-                                    <li>RESTful APIs</li>
-                                </ul>
-                            </div>
-                            
-                            <div className="tech-category">
-                                <h3>Deployment</h3>
-                                <ul>
-                                    <li>Vercel/Netlify (Frontend)</li>
-                                    <li>Heroku/Render (Backend)</li>
-                                    <li>MongoDB Atlas (Database)</li>
-                                    <li>GitHub Actions (CI/CD)</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section className="developer-section">
-                        <h2>Meet the Developer</h2>
-                        <div className="developer-card">
-                            <div className="developer-info">
-                                <h3>John Doe</h3>
-                                <p className="developer-title">Computer Science & Engineering Student</p>
-                                <p>
-                                    John is a passionate developer with expertise in full-stack web development 
-                                    and a deep interest in health and fitness technology. He developed FitTrack 
-                                    to combine his technical skills with his commitment to helping others live 
-                                    healthier lives.
-                                </p>
-                                <p>
-                                    When not coding, John can be found weightlifting, running, or experimenting 
-                                    with new healthy recipes in the kitchen.
-                                </p>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section className="contact-section">
-                        <h2>Contact for Opportunities</h2>
-                        <p>Interested in collaborating or have opportunities to discuss? I'd love to hear from you!</p>
-                        <div className="contact-info">
-                            <p><strong>Email:</strong> john.doe@fittrack.com</p>
-                            <p><strong>GitHub:</strong> github.com/johndoe</p>
-                            <p><strong>LinkedIn:</strong> linkedin.com/in/johndoe</p>
-                        </div>
-                    </section>
-
-                    <div className="about-actions">
-                        <Link to="/signup" className="btn btn-primary">Get Started Today</Link>
-                        <Link to="/contact" className="btn btn-outline">Contact Us</Link>
+            {/* Hero Section */}
+            <section className="about-hero">
+                <div className="hero-content">
+                    <h1>Transform Your Fitness Journey</h1>
+                    <p>Join thousands of users who have achieved their fitness goals with our AI-powered personalized training plans</p>
+                    <div className="hero-actions">
+                        {user ? (
+                            <Link to="/dashboard" className="btn-primary">Go to Dashboard</Link>
+                        ) : (
+                            <Link to="/signup" className="btn-primary">Start Your Journey</Link>
+                        )}
+                        <Link to="/programs" className="btn-outline">View Programs</Link>
                     </div>
                 </div>
-            </div>
+                <div className="hero-stats">
+                    <div className="stat">
+                        <span className="stat-number">50K+</span>
+                        <span className="stat-label">Active Users</span>
+                    </div>
+                    <div className="stat">
+                        <span className="stat-number">95%</span>
+                        <span className="stat-label">Success Rate</span>
+                    </div>
+                    <div className="stat">
+                        <span className="stat-number">24/7</span>
+                        <span className="stat-label">AI Support</span>
+                    </div>
+                </div>
+            </section>
+
+            {/* Features Section */}
+            <section className="features-section">
+                <div className="container">
+                    <h2>Why Choose FitTrack?</h2>
+                    <div className="features-grid">
+                        <div className="feature-card">
+                            <div className="feature-icon">🤖</div>
+                            <h3>AI-Powered Plans</h3>
+                            <p>Get personalized workout and nutrition plans tailored to your body type, goals, and fitness level using advanced algorithms.</p>
+                        </div>
+                        <div className="feature-card">
+                            <div className="feature-icon">📊</div>
+                            <h3>Smart Progress Tracking</h3>
+                            <p>Monitor your progress with detailed analytics, real-time insights, and adaptive goal setting that evolves with you.</p>
+                        </div>
+                        <div className="feature-card">
+                            <div className="feature-icon">💪</div>
+                            <h3>Expert Workouts</h3>
+                            <p>Access hundreds of exercises and workout routines designed by certified fitness professionals and trainers.</p>
+                        </div>
+                        <div className="feature-card">
+                            <div className="feature-icon">🍎</div>
+                            <h3>Nutrition Guidance</h3>
+                            <p>Receive personalized meal plans, calorie tracking, and macro-nutrient optimization for optimal results.</p>
+                        </div>
+                        <div className="feature-card">
+                            <div className="feature-icon">📱</div>
+                            <h3>Mobile Friendly</h3>
+                            <p>Track your fitness anytime, anywhere with our responsive design that works perfectly on all devices.</p>
+                        </div>
+                        <div className="feature-card">
+                            <div className="feature-icon">👥</div>
+                            <h3>Community Support</h3>
+                            <p>Join a supportive community, share achievements, and get motivated by others on the same journey.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* How It Works */}
+            <section className="how-it-works">
+                <div className="container">
+                    <h2>How FitTrack Works</h2>
+                    <div className="steps-container">
+                        <div className="step">
+                            <div className="step-number">1</div>
+                            <div className="step-content">
+                                <h3>Create Your Profile</h3>
+                                <p>Tell us about your fitness goals, body metrics, and experience level</p>
+                            </div>
+                        </div>
+                        <div className="step">
+                            <div className="step-number">2</div>
+                            <div className="step-content">
+                                <h3>Get Personalized Plan</h3>
+                                <p>Our AI generates a customized fitness and nutrition plan just for you</p>
+                            </div>
+                        </div>
+                        <div className="step">
+                            <div className="step-number">3</div>
+                            <div className="step-content">
+                                <h3>Track & Improve</h3>
+                                <p>Follow your plan, track progress, and watch as our system adapts to your results</p>
+                            </div>
+                        </div>
+                        <div className="step">
+                            <div className="step-number">4</div>
+                            <div className="step-content">
+                                <h3>Achieve Goals</h3>
+                                <p>Reach your fitness targets with continuous support and optimized plans</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* CTA Section */}
+            <section className="cta-section">
+                <div className="container">
+                    <h2>Ready to Transform Your Life?</h2>
+                    <p>Join FitTrack today and start your journey to a healthier, stronger you</p>
+                    <div className="cta-actions">
+                        {user ? (
+                            <Link to="/dashboard" className="btn-primary large">Continue Your Journey</Link>
+                        ) : (
+                            <>
+                                <Link to="/signup" className="btn-primary large">Start Free Trial</Link>
+                                <Link to="/login" className="btn-outline large">Existing User? Login</Link>
+                            </>
+                        )}
+                    </div>
+                </div>
+            </section>
         </div>
     );
 };
