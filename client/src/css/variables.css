@@ -1,0 +1,22 @@
+:root {
+  --primary: #6a65e9;         /* Deep brand purple */
+  --primary-dark: #2d3179;     /* Dark purple */
+  --accent: #FFCE64;           /* Gold accent for Workout Plans */
+  --accent-cyan: #36d1dc;      /* Cyan for Community */
+  --white: #fff;
+  --gray-light: #f3f5fa;
+  --gradient-hero: linear-gradient(120deg, #6a65e9 0%, #cb5eee 100%);
+  --card-bg: #fff;
+  --card-shadow: 0 2px 24px rgba(70,40,180,0.09);
+  --border-radius-xl: 1.13rem;
+  --navbar-height: 70px;
+  --font-size-hero: 2.5rem;
+  --font-size-title: 1.5rem;
+  --font-size-base: 1rem;
+  --button-bg: #cb5eee;
+  --button-gradient: linear-gradient(90deg, #6a65e9 25%, #cb5eee 95%);
+  --button-text: #fff;
+  --button-hover: #6a65e9;
+  --spacing-xl: 2rem;
+  --spacing-md: 1rem;
+}

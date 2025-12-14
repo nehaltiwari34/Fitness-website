@@ -1,0 +1,103 @@
+.ft-navbar {
+  width: 100%;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.ft-navbar-row {
+  max-width: 1200px;
+  margin: auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Ensure Brand and Navlinks are spaced, each hugs different side */
+.ft-brand {
+  display: flex;
+  align-items: center;
+  min-width: 180px;
+}
+
+.ft-brand-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  /* KEY CHANGE: Add right margin to space brand/logo from nav links */
+  margin-right: 48px;
+}
+.ft-logo {
+  font-size: 24px;
+  margin-right: 6px;
+}
+.ft-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #7b2ff2;
+}
+.ft-navlinks {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+}
+
+/* rest as before */
+.ft-navlink {
+  text-decoration: none;
+  font-weight: 600;
+  color: #555;
+  font-size: 1.08rem;
+  background: none;
+  border-radius: 8px;
+  padding: 8px 18px;
+  border: 2px solid transparent;
+  transition: 0.22s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.ft-navlink:hover, .ft-navlink.active {
+  color: #7b2ff2;
+  background: #ede2ff;
+  border-color: #7b2ff2;
+}
+.ft-login {
+  border: 2px solid #7b2ff2;
+  color: #7b2ff2;
+  background: #fff;
+}
+.ft-login:hover, .ft-login.active {
+  background: #ede2ff;
+}
+.ft-signup {
+  background: linear-gradient(120deg, #7b2ff2, #f972ff);
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 700;
+  border: none;
+}
+.ft-signup:hover, .ft-signup.active {
+  opacity: 0.85;
+}
+.ft-logout-btn {
+  border: 2px solid #ff92b0;
+  color: #ff2072;
+  background: #fff;
+  font-weight: 700;
+  font-size: 1.07rem;
+  border-radius: 8px;
+  padding: 8px 18px;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.ft-logout-btn:hover,
+.ft-logout-btn:focus {
+  background: #ffe4ed;
+  border-color: #ff2072;
+  color: #fff;
+}

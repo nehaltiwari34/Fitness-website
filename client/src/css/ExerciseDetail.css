@@ -1,0 +1,781 @@
+/* ExerciseDetail.css - CORRECTED & ENHANCED */
+.exercise-detail-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Breadcrumb Navigation */
+.breadcrumb {
+  margin-bottom: 2rem;
+  font-size: 0.9rem;
+  color: var(--secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.breadcrumb a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+  color: var(--primary-dark);
+}
+
+.breadcrumb span {
+  color: var(--secondary);
+}
+
+/* Exercise Header Layout */
+.exercise-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+  align-items: start;
+}
+
+/* Media Section */
+.exercise-media {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow-hover);
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+}
+
+.video-player {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  background: #000;
+}
+
+.video-player iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.exercise-image-large {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Exercise Info Section */
+.exercise-info {
+  padding: 0;
+}
+
+.exercise-title-section {
+  margin-bottom: 1.5rem;
+}
+
+.exercise-title-section h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  background: var(--gradient-energy);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  line-height: 1.2;
+}
+
+.exercise-badges {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.difficulty-badge {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.difficulty-badge.beginner {
+  background: var(--success-light);
+  color: var(--success);
+}
+
+.difficulty-badge.intermediate {
+  background: var(--warning-light);
+  color: var(--warning);
+}
+
+.difficulty-badge.advanced {
+  background: var(--error-light);
+  color: var(--error);
+}
+
+.category-badge {
+  padding: 0.5rem 1rem;
+  background: var(--primary-light);
+  color: var(--primary);
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.exercise-description-detailed {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  border-left: 4px solid var(--primary);
+}
+
+/* Exercise Specifications */
+.exercise-specs {
+  margin-bottom: 2rem;
+}
+
+.spec-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.spec-item {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+  transition: var(--transition);
+}
+
+.spec-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.spec-label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--secondary);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.spec-value {
+  display: block;
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+/* Targets and Equipment Sections */
+.target-muscles,
+.equipment-needed {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+}
+
+.target-muscles h3,
+.equipment-needed h3 {
+  margin-bottom: 1rem;
+  color: var(--primary);
+  font-size: 1.2rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.target-muscles h3::before {
+  content: "🎯";
+}
+
+.equipment-needed h3::before {
+  content: "⚙️";
+}
+
+.muscle-tags,
+.equipment-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.muscle-tag {
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.muscle-tag:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(66, 153, 225, 0.3);
+}
+
+.equipment-tag {
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, var(--success), var(--success-dark));
+  color: white;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.equipment-tag:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(72, 187, 120, 0.3);
+}
+
+/* Exercise Actions */
+.exercise-actions-detailed {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.btn-primary.large,
+.btn-outline.large {
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+  font-size: 1rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+  min-width: 200px;
+  justify-content: center;
+}
+
+.btn-primary.large {
+  background: var(--primary);
+  color: white;
+  box-shadow: 0 4px 15px rgba(66, 153, 225, 0.3);
+}
+
+.btn-primary.large:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(66, 153, 225, 0.4);
+}
+
+.btn-outline.large {
+  background: transparent;
+  color: var(--text-primary);
+  border: 2px solid var(--border-color);
+}
+
+.btn-outline.large:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateY(-2px);
+}
+
+/* Instructions Section */
+.instructions-section {
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: var(--card-bg);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+}
+
+.instructions-section h2 {
+  margin-bottom: 1.5rem;
+  color: var(--primary);
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.instructions-section h2::before {
+  content: "📝";
+}
+
+.instructions-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: instruction-counter;
+}
+
+.instruction-item {
+  counter-increment: instruction-counter;
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  border-left: 4px solid var(--primary);
+  position: relative;
+  line-height: 1.6;
+  color: var(--text-primary);
+}
+
+.instruction-item:last-child {
+  margin-bottom: 0;
+}
+
+.instruction-item::before {
+  content: counter(instruction-counter);
+  position: absolute;
+  left: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--primary);
+  color: white;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(66, 153, 225, 0.3);
+}
+
+/* Comments Section */
+.comments-section {
+  margin-bottom: 3rem;
+}
+
+.comments-section h2 {
+  margin-bottom: 1.5rem;
+  color: var(--primary);
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.comments-section h2::before {
+  content: "💬";
+}
+
+/* Add Comment Form */
+.add-comment {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+  margin-bottom: 2rem;
+}
+
+.comment-textarea {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 1rem;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  resize: vertical;
+  min-height: 100px;
+  font-family: inherit;
+  transition: var(--transition);
+  margin-bottom: 1rem;
+}
+
+.comment-textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+}
+
+.comment-textarea::placeholder {
+  color: var(--secondary);
+}
+
+.comment-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+/* Comments List */
+.comments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.comment-item {
+  background: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+  transition: var(--transition);
+}
+
+.comment-item:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+.comment-author {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+}
+
+.comment-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--border-color);
+}
+
+.comment-avatar.small {
+  width: 36px;
+  height: 36px;
+  border-width: 2px;
+}
+
+.author-info {
+  flex: 1;
+}
+
+.author-info strong {
+  display: block;
+  color: var(--text-primary);
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.comment-time {
+  font-size: 0.8rem;
+  color: var(--secondary);
+}
+
+.comment-content {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  color: var(--text-primary);
+  padding: 0 0.5rem;
+}
+
+.comment-actions {
+  display: flex;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.like-btn,
+.reply-btn {
+  background: none;
+  border: none;
+  color: var(--secondary);
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  transition: var(--transition);
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+}
+
+.like-btn:hover,
+.reply-btn:hover {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+.like-btn.liked {
+  color: var(--error);
+  background: var(--error-light);
+}
+
+/* Replies Section */
+.replies-section {
+  margin-top: 1.5rem;
+  padding-left: 2rem;
+  border-left: 3px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.reply-item {
+  background: var(--bg-secondary);
+  padding: 1.25rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.reply-item .comment-author {
+  margin-bottom: 0.75rem;
+}
+
+.reply-item .comment-content {
+  margin-bottom: 0;
+  padding: 0;
+}
+
+/* No Comments State */
+.no-comments {
+  text-align: center;
+  padding: 3rem 2rem;
+  color: var(--secondary);
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+}
+
+.no-comments p {
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+/* Related Exercises */
+.related-exercises {
+  margin-bottom: 3rem;
+}
+
+.related-exercises h2 {
+  margin-bottom: 1.5rem;
+  color: var(--primary);
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.related-exercises h2::before {
+  content: "🔗";
+}
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.related-exercise-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition);
+  border: 1px solid var(--border-color);
+}
+
+.related-exercise-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  color: inherit;
+  text-decoration: none;
+}
+
+.related-exercise-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+}
+
+.related-exercise-card h4 {
+  padding: 1.25rem 1.25rem 0.5rem;
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.related-category {
+  display: block;
+  padding: 0 1.25rem 1.25rem;
+  font-size: 0.85rem;
+  color: var(--secondary);
+  font-weight: 600;
+}
+
+/* Error State */
+.error-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--secondary);
+}
+
+.error-state h2 {
+  color: var(--error);
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.error-state p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+/* Loading State */
+.loading-spinner-large {
+  width: 60px;
+  height: 60px;
+  border: 4px solid var(--border-color);
+  border-top: 4px solid var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 3rem auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+  .exercise-header {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .exercise-media {
+    order: -1;
+  }
+  
+  .spec-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .exercise-detail-container {
+    padding: 1rem;
+  }
+  
+  .exercise-title-section h1 {
+    font-size: 2rem;
+  }
+  
+  .exercise-actions-detailed {
+    flex-direction: column;
+  }
+  
+  .btn-primary.large,
+  .btn-outline.large {
+    min-width: auto;
+    width: 100%;
+  }
+  
+  .spec-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .replies-section {
+    padding-left: 1rem;
+  }
+  
+  .related-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .instructions-section,
+  .add-comment,
+  .target-muscles,
+  .equipment-needed {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .exercise-title-section h1 {
+    font-size: 1.75rem;
+  }
+  
+  .comment-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  
+  .comment-actions {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .like-btn,
+  .reply-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .breadcrumb {
+    flex-wrap: wrap;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .exercise-actions-detailed,
+  .comments-section,
+  .related-exercises,
+  .video-player {
+    display: none;
+  }
+  
+  .exercise-header {
+    grid-template-columns: 1fr;
+  }
+  
+  .exercise-card {
+    break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
